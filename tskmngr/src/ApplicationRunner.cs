@@ -19,12 +19,12 @@ public class ApplicationRunner
         Console.Write("Введите имя пользователя: ");
         string username = Console.ReadLine();
 
-        // Проверка существования пользователя в базе данных
+        // проверка существования пользователя в базе данных
         _currentUser = _context.Users.FirstOrDefault(u => u.UserName == username);
 
         if (_currentUser == null)
         {
-            // Создание нового пользователя, если не найден
+            // создание нового пользователя, если не найден
             _currentUser = new User { UserName = username };
             _context.Users.Add(_currentUser);
             _context.SaveChanges();
